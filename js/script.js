@@ -1,8 +1,18 @@
+//variables
 let numero = "";
-
-let pantalla = document.getElementById("pantalla");
-let operando1, operando2;
 let operacion = "";
+let operando1, operando2;
+
+//mapeo de botnoes
+let pantalla = document.getElementById("pantalla");
+let borrar = document.getElementById("borrar");
+let suma = document.getElementById("suma");
+let resta = document.getElementById("resta");
+let multiplicacion = document.getElementById("division");
+let igual = document.getElementById("igual");
+let retroceder = document.getElementById("retroceder");
+
+let botones = Array.from(document.getElementsByTagName("td"));
 
 
 
@@ -18,7 +28,6 @@ function actualizaCifra(cifra){
     }    
 };
 
-let botones = Array.from(document.getElementsByTagName("td"));
 
 
     
@@ -34,11 +43,24 @@ let botones = Array.from(document.getElementsByTagName("td"));
         });
     });
 
-let borrar = document.getElementById("borrar");
-let suma = document.getElementById("suma");
-let resta = document.getElementById("resta");
-let multiplicacion = document.getElementById("division");
-let igual = document.getElementById("igual");
+
+function atras (){
+
+    if(numero.length>0){
+        numero = numero.substring(0, numero.length-1);
+
+        pantalla.innerText=numero.length>0 ? numero : "0";
+    
+
+    }
+
+
+}
+
+retroceder.addEventListener("click", ()=>{
+    atras();
+
+});
 
 borrar.addEventListener("click", ()=>{
     actualizaCifra("B");
